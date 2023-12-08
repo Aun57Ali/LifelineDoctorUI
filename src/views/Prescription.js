@@ -27,8 +27,8 @@ export default function Prescription() {
                 <Row>
                   <Col className="pr-md-1" md="6">
                     <FormGroup>
-                    <label>ID</label>
-                      <select class="form-control" id="genderSelect">
+                      <label>ID</label>
+                      <select class="form-control" name="DP_P_ID" id="genderSelect">
                         <option value="">Select ID</option>
                         <option value="male">A</option>
                         <option value="female">B</option>
@@ -38,81 +38,36 @@ export default function Prescription() {
                   </Col>
                   <Col className="pl-md-1" md="6">
                     <FormGroup>
-                      <label>Dosage</label>
-                      <Input
-                        defaultValue=""
-                        placeholder=""
-                        type="text"
-                      />
-                    </FormGroup>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col className="pr-md-1" md="3">
-                    <FormGroup>
-                      <label>Select Start Date & Time</label>
-                      <Input defaultValue="" placeholder="Start Date" type="date" />
-                    </FormGroup>
-                  </Col>
-                  <Col className="px-md-1" md="3">
-                    <FormGroup>
-                      <label></label>
-                      <select class="form-control" id="genderSelect">
-                        <option value="">Select Time Slot</option>
-                        <option value="male">9:00 AM</option>
-                        <option value="female">10:00 AM</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </FormGroup>
-                  </Col>
-                  <Col className="px-md-1" md="3">
-                    <FormGroup>
-                      <label>Select End Date & Time</label>
-                      <Input defaultValue="" placeholder="End Date" type="date" />
-                    </FormGroup>
-                  </Col>
-                  <Col className="px-md-1" md="3">
-                    <FormGroup>
-                      <label></label>
-                      <select class="form-control" id="genderSelect">
-                        <option value="">Select Time Slot</option>
-                        <option value="male">9:00 AM</option>
-                        <option value="female">10:00 AM</option>
-                        <option value="other">Other</option>
-                      </select>
+                      <label>Disease</label>
+                      <Input defaultValue="" name="DP_Disease" placeholder="" type="text" />
                     </FormGroup>
                   </Col>
                 </Row>
                 <Row>
                   <Col className="pr-md-1" md="6">
                     <FormGroup>
-                      <label>Schedule Time</label>
-                      <select class="form-control" id="genderSelect">
-                        <option value="">Select Time</option>
-                        <option value="male">9:00 AM</option>
-                        <option value="female">10:00 AM</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </FormGroup>
-                  </Col>
-                  <Col className="pl-md-1" md="6">
-                    <FormGroup>
-                    <label>Medicine Name</label>
+                      <label>Select Date & Time</label>
                       <Input
                         defaultValue=""
-                        placeholder="Medicine Name"
-                        type="text"
+                        name="DP_Date"
+                        placeholder="Start Date"
+                        type="date"
                       />
                     </FormGroup>
-                  </Col>
+                  </Col>                  
                 </Row>
-
                 <Row>
-                <Col className="pr-md-1" md="4">
-                    <FormGroup><Link to="/admin/Medicine">
-                    <Button className="btn-fill" color="success" type="submit">
-                Add Medicine
-              </Button></Link>
+                  <Col className="pr-md-1" md="4">
+                    <FormGroup>
+                      <Link to="/admin/Medicine">
+                        <Button
+                          className="btn-fill"
+                          color="success"
+                          type="submit"
+                        >
+                          Add Medicine
+                        </Button>
+                      </Link>
                     </FormGroup>
                   </Col>
                 </Row>
@@ -127,5 +82,5 @@ export default function Prescription() {
         </Col>
       </Row>
     </div>
-  )
+  );
 }

@@ -18,7 +18,7 @@ export default function Forgot() {
             Reset Your Password
           </label>          
           <input type="email" name="email" placeholder="Email" required="" />          
-          <button><Link to='/admin/Login' style={{color:'white'}}>Send Mail</Link></button>
+          <Link to='/admin/Login' style={{color:'white'}}><button>Send Mail</button></Link>
         </form>
       </div>
       

@@ -24,11 +24,15 @@ export default function Medicine() {
             </CardHeader>
             <CardBody>
               <Form>
-                <Row>
+              <Row>
                   <Col className="pr-md-1" md="6">
                     <FormGroup>
                       <label>ID</label>
-                      <select class="form-control" id="genderSelect">
+                      <select
+                        class="form-control"
+                        name="PM_DP_ID"
+                        id="idSelect"
+                      >
                         <option value="">Select ID</option>
                         <option value="male">A</option>
                         <option value="female">B</option>
@@ -38,34 +42,68 @@ export default function Medicine() {
                   </Col>
                   <Col className="pl-md-1" md="6">
                     <FormGroup>
-                      <label>Disease</label>
-                      <Input defaultValue="" placeholder="" type="text" />
+                      <label>Dosage</label>
+                      <Input
+                        defaultValue=""
+                        name="PM_Dosage"
+                        placeholder=""
+                        type="text"
+                      />
                     </FormGroup>
                   </Col>
                 </Row>
                 <Row>
                   <Col className="pr-md-1" md="3">
                     <FormGroup>
-                      <label>Select Date & Time</label>
+                      <label>Select Start Date</label>
                       <Input
                         defaultValue=""
+                        name="PM_StartDate"
                         placeholder="Start Date"
                         type="date"
                       />
                     </FormGroup>
                   </Col>
+                  
                   <Col className="px-md-1" md="3">
                     <FormGroup>
-                      <label></label>
-                      <select class="form-control" id="genderSelect">
-                        <option value="">Select Time Slot</option>
+                      <label>Select End Date</label>
+                      <Input
+                        defaultValue=""
+                        name="PM_EndDate"
+                        placeholder="End Date"
+                        type="date"
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col className="pl-md-1" md="6">
+                    <FormGroup>
+                      <label>Schedule Time</label>
+                      <select class="form-control" name="PM_ScheduleTime" id="genderSelect">
+                        <option value="">Select Time</option>
                         <option value="male">9:00 AM</option>
                         <option value="female">10:00 AM</option>
                         <option value="other">Other</option>
                       </select>
                     </FormGroup>
                   </Col>
-                  <Col className="pr-md-1" md="4">
+                </Row>
+                <Row>
+                  <Col className="pr-md-1" md="6">
+                    <FormGroup>
+                      <label>Medicine Name</label>
+                      <Input
+                        defaultValue=""
+                        name="PM_Dosage"
+                        placeholder="Medicine Name"
+                        type="text"
+                      />
+                    </FormGroup>
+                  </Col>
+                </Row>
+
+                <Row>
+                <Col className="pr-md-1" md="4">
                     <FormGroup><Link to="/admin/Prescription">
                       <Button
                         className="btn-fill"
@@ -77,6 +115,7 @@ export default function Medicine() {
                     </FormGroup>
                   </Col>
                 </Row>
+                
               </Form>
             </CardBody>
             <CardFooter>

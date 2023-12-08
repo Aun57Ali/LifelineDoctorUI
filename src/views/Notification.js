@@ -1,27 +1,53 @@
-import React from "react";
-import doctor1 from "assets/img/1.jpg";
-import doctor2 from "assets/img/6.jpg";
-import doctor3 from "assets/img/8.jpg";
+import React, { useState } from "react";
 import {
-  Button,
   Card,
   CardHeader,
   CardTitle,
+  Row,
+  Col,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
-  Row,
-  Col,
-  CardBody,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 
-export default function Notification() {
+const notifications = [
+  {
+    Type: "Patient",
+    Date: "28 August 2023, 12:45 PM",
+    P_Name: "Mark",
+    D_Name: "",
+    P_No: "#8382",
+  },
+  {
+    Type: "Appointment",
+    Date: "28 October 2023, 10:15 PM",
+    P_Name: "Harry",
+    D_Name: "Dr Martha",
+    P_No: "#93482",
+  },
+  {
+    Type: "Patient",
+    Date: "o9 October 2023, 04:22 PM",
+    P_Name: "Suzy",
+    D_Name: "",
+    P_No: "#0242",
+  },
+];
+
+const Notification = () => {
+  const [selectedType, setSelectedType] = useState("Patients");
+
+  const filteredNotifications = notifications.filter(
+    (notification) =>
+      (selectedType === "Patients" && notification.Type === "Patient") ||
+      (selectedType === "Appointments" && notification.Type === "Appointment")
+  );
+
   return (
     <div className="content">
       <Row className="justify-content-end">
-        <UncontrolledDropdown className="ml-auto">
+        <UncontrolledDropdown className="mx-auto">
           <DropdownToggle
             caret
             className="btn-icon"
@@ -32,86 +58,52 @@ export default function Notification() {
             <i className="tim-icons icon-components" />
           </DropdownToggle>
           <DropdownMenu aria-labelledby="dropdownMenuLink" right>
-            <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
-              Appointments
-            </DropdownItem>
-            <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
+            <DropdownItem onClick={() => setSelectedType("Patients")}>
               Patients
+            </DropdownItem>
+            <DropdownItem onClick={() => setSelectedType("Appointments")}>
+              Appointments
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
       </Row>
+
+      {/* Rendering notifications */}
       <Row>
-        <br></br>
-      </Row>
-      <Row>
-        <Col lg="6" md="12">
-          <Card className="card-chart">
-            <CardHeader>
-              <Row>
-                <Col className="text-left" sm="6">
-                  <CardTitle tag="h2">New Patient</CardTitle>
-                  <h2>Description</h2>
-                  <i className="tim-icons icon-calendar-60" /> Join Date: 21
-                  August 2023, 12:45 AM<p></p>
-                  <h4>Patient Name: Mark</h4>
-                  <h5>Patient No.: #29821</h5>
-                </Col>
-              </Row>
-            </CardHeader>
-          </Card>
-        </Col>
-        <Col lg="6" md="12">
-          <Card className="card-chart">
-            <CardHeader>
-              <Row>
-                <Col className="text-left" sm="6">
-                  <CardTitle tag="h2">New Patient</CardTitle>
-                  <h2>Description</h2>
-                  <i className="tim-icons icon-calendar-60" /> Join Date: 25
-                  August 2023, 12:45 AM<p></p>
-                  <h4>Patient Name: Kane</h4>
-                  <h5>Patient No.: #39421</h5>
-                </Col>
-              </Row>
-            </CardHeader>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="6" md="12">
-          <Card className="card-chart">
-            <CardHeader>
-              <Row>
-              <Col className="text-left" sm="6">
-                  <CardTitle tag="h2">New Appointment</CardTitle>
-                  <h2>Description</h2>
-                  <i className="tim-icons icon-calendar-60" /> Date: 29 October 2023, 12:45 PM<p></p>
-                  <h4>Patient Name: Harry</h4>
-                  <h4>Doctor Name: Dr. Martha Lazis</h4>
-                  <h5>Patient No.: #39421</h5>
-                </Col>
-              </Row>
-            </CardHeader>
-          </Card>
-        </Col>
-        <Col lg="6" md="12">
-          <Card className="card-chart">
-            <CardHeader>
-              <Row>
-              <Col className="text-left" sm="6">
-                  <CardTitle tag="h2">New Appointment</CardTitle>
-                  <h2>Description</h2>
-                  <i className="tim-icons icon-calendar-60" /> Date: 30 October 2023, 02:45 PM<p></p>
-                  <h4>Patient Name: Katherine</h4>
-                  <h4>Doctor Name: Dr. Mark Andrew</h4>
-                  <h5>Patient No.: #23948</h5>
-                </Col>
-              </Row>
-            </CardHeader>
-          </Card>
-        </Col>
+        {filteredNotifications.map((notification, index) => (
+          <Col key={index} lg="6" md="12">
+            <Card className="card-chart">
+              <CardHeader>
+                <Row>
+                  <Col className="text-left" sm="6">
+                    <CardTitle tag="h2">
+                      {notification.Type === "Patient"
+                        ? "New Patient"
+                        : "New Appointment"}
+                    </CardTitle>
+                    <h2>Description</h2>
+                    <i className="tim-icons icon-calendar-60" /> Date:{" "}
+                    {notification.Date}
+                    <p></p>
+                    <h4>Patient Name: {notification.P_Name}</h4>
+                    {notification.Type === "Patient" && (
+                      <h5>Patient No.: {notification.P_No}</h5>
+                    )}
+                    {notification.Type === "Appointment" && (
+                      <>
+                        <h4>Doctor Name: {notification.D_Name}</h4>
+                        <h5>Patient No.: {notification.P_No}</h5>
+                      </>
+                    )}
+                  </Col>
+                </Row>
+              </CardHeader>
+            </Card>
+          </Col>
+        ))}
       </Row>
     </div>
   );
-}
+};
+
+export default Notification;
